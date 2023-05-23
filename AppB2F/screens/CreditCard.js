@@ -4,27 +4,30 @@ import {
   View,
   Text,
   SafeAreaView,
-  TouchableOpacity,
-  StyleSheet,
   Button,
+  StyleSheet,
+  TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-const Accueil = () => {
+const CreditCard = () => {
   const navigation = useNavigation();
 
-  const goToSecondScreen = () => {
-    navigation.navigate("Second");
-  };
+const goToHome = () =>{
+    navigation.navigate("Accueil");
+}
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text>This is Home</Text>
-        <Button onPress={goToSecondScreen} title="Va sur le deuxième écran" />
+        <Text>This is the CreditCard Screen</Text>
+        <Button
+          onPress={() => navigation.navigate("Modal")}
+          title="Ouvre le Modal"
+        />
       </View>
       <View style={styles.navBar}>
         <TouchableOpacity style={styles.iconContainer}>
@@ -34,13 +37,10 @@ const Accueil = () => {
           <MaterialCommunityIcons name="map-marker" size={24} color="black" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
-          <Ionicons name="home" size={24} color="#EF8536" />
+          <Ionicons name="home" size={24} color="black" onPress={goToHome}/>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.iconContainer}
-          onPress={goToSecondScreen}
-        >
-          <FontAwesome name="credit-card-alt" size={20} color="black" />
+        <TouchableOpacity style={styles.iconContainer}>
+          <FontAwesome name="credit-card-alt" size={20} color="#EF8536" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
           <Ionicons name="person" size={24} color="black" />
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Accueil;
+export default CreditCard;
