@@ -69,6 +69,8 @@ const styles = StyleSheet.create({
     borderColor: "black",
     paddingVertical: 10,
     alignItems: "center",
+    marginHorizontal: 15,
+    borderRadius: 20,
   },
   iconContainer: {
     flex: 1,
