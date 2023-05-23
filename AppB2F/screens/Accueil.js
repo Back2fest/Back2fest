@@ -16,14 +16,15 @@ import { FontAwesome5 } from "@expo/vector-icons";
 const Accueil = () => {
   const navigation = useNavigation();
 
+  const goToSecondScreen = () => {
+    navigation.navigate("Second");
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <Text>This is Home</Text>
-        <Button
-          onPress={() => navigation.navigate("Second")}
-          title="Va sur le deuxième écran"
-        />
+        <Button onPress={goToSecondScreen} title="Va sur le deuxième écran" />
       </View>
       <View style={styles.navBar}>
         <TouchableOpacity style={styles.iconContainer}>
@@ -35,8 +36,11 @@ const Accueil = () => {
         <TouchableOpacity style={styles.iconContainer}>
           <Ionicons name="home" size={24} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.iconContainer}>
-          <FontAwesome name="credit-card-alt" size={24} color="black" />
+        <TouchableOpacity
+          style={styles.iconContainer}
+          onPress={goToSecondScreen}
+        >
+          <FontAwesome name="credit-card-alt" size={20} color="black" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
           <Ionicons name="person" size={24} color="black" />
