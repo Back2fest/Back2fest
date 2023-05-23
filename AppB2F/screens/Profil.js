@@ -4,30 +4,29 @@ import {
   View,
   Text,
   SafeAreaView,
-  TouchableOpacity,
-  StyleSheet,
   Button,
+  StyleSheet,
+  TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-const Accueil = () => {
+const Profil = () => {
   const navigation = useNavigation();
 
-  const goToCreditCard = () => {
+const goToHome = () =>{
+    navigation.navigate("Accueil");
+}
+const goToCreditCard = () =>{
     navigation.navigate("CreditCard");
-  };
-  const goToProfil = () => {
-    navigation.navigate("Profil");
-  };
+}
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text>This is Home</Text>
-        <Button onPress={goToCreditCard} title="Va sur le deuxième écran" />
+        <Text>This is the profil Screen</Text>
       </View>
       <View style={styles.navBar}>
         <TouchableOpacity style={styles.iconContainer}>
@@ -37,16 +36,13 @@ const Accueil = () => {
           <MaterialCommunityIcons name="map-marker" size={24} color="black" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
-          <Ionicons name="home" size={24} color="#EF8536" />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.iconContainer}
-          onPress={goToCreditCard}
-        >
-          <FontAwesome name="credit-card-alt" size={20} color="black" />
+          <Ionicons name="home" size={24} color="black" onPress={goToHome}/>
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
-          <Ionicons name="person" size={24} color="black" onPress={goToProfil}/>
+          <FontAwesome name="credit-card-alt" size={20} color="black" onPress={goToCreditCard}/>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.iconContainer}>
+          <Ionicons name="person" size={24} color="#EF8536" />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -81,4 +77,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Accueil;
+export default Profil;

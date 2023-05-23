@@ -19,6 +19,9 @@ const CreditCard = () => {
 const goToHome = () =>{
     navigation.navigate("Accueil");
 }
+const goToProfil = () =>{
+    navigation.navigate("Profil");
+}
 
   return (
     <SafeAreaView style={styles.container}>
@@ -43,7 +46,7 @@ const goToHome = () =>{
           <FontAwesome name="credit-card-alt" size={20} color="#EF8536" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
-          <Ionicons name="person" size={24} color="black" />
+          <Ionicons name="person" size={24} color="black" onPress={goToProfil}/>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
