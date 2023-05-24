@@ -22,6 +22,12 @@ const goToHome = () =>{
 const goToCreditCard = () =>{
     navigation.navigate("CreditCard");
 }
+const goToMap = () =>{
+    navigation.navigate("Map");
+}
+const goToFood = () =>{
+    navigation.navigate("Food");
+}
 
   return (
     <SafeAreaView style={styles.container}>
@@ -30,10 +36,10 @@ const goToCreditCard = () =>{
       </View>
       <View style={styles.navBar}>
         <TouchableOpacity style={styles.iconContainer}>
-          <FontAwesome5 name="shopping-basket" size={24} color="black" />
+          <FontAwesome5 name="shopping-basket" size={24} color="black" onPress={goToFood}/>
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
-          <MaterialCommunityIcons name="map-marker" size={24} color="black" />
+          <MaterialCommunityIcons name="map-marker" size={24} color="black" onPress={goToMap}/>
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
           <Ionicons name="home" size={24} color="black" onPress={goToHome}/>

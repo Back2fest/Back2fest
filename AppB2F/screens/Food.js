@@ -13,34 +13,31 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-const CreditCard = () => {
+const Profil = () => {
   const navigation = useNavigation();
 
 const goToHome = () =>{
     navigation.navigate("Accueil");
 }
-const goToProfil = () =>{
-    navigation.navigate("Profil");
+const goToCreditCard = () =>{
+    navigation.navigate("CreditCard");
 }
 const goToMap = () =>{
     navigation.navigate("Map");
 }
-const goToFood = () =>{
-    navigation.navigate("Food");
+const goToProfil = () =>{
+    navigation.navigate("Profil");
 }
+
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text>This is the CreditCard Screen</Text>
-        <Button
-          onPress={() => navigation.navigate("Modal")}
-          title="Ouvre le Modal"
-        />
+        <Text>This is the Food Screen</Text>
       </View>
       <View style={styles.navBar}>
         <TouchableOpacity style={styles.iconContainer}>
-          <FontAwesome5 name="shopping-basket" size={24} color="black" onPress={goToFood}/>
+          <FontAwesome5 name="shopping-basket" size={24} color="#EF8536" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
           <MaterialCommunityIcons name="map-marker" size={24} color="black" onPress={goToMap}/>
@@ -49,7 +46,7 @@ const goToFood = () =>{
           <Ionicons name="home" size={24} color="black" onPress={goToHome}/>
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
-          <FontAwesome name="credit-card-alt" size={20} color="#EF8536" />
+          <FontAwesome name="credit-card-alt" size={20} color="black" onPress={goToCreditCard}/>
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
           <Ionicons name="person" size={24} color="black" onPress={goToProfil}/>
@@ -87,4 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreditCard;
+export default Profil;
