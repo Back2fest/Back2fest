@@ -52,7 +52,7 @@ const Accueil = () => {
         <TouchableOpacity style={styles.iconContainer}>
           <FontAwesome5
             name="shopping-basket"
-            size={24}
+            size={32}
             color="black"
             onPress={goToFood}
           />
@@ -60,21 +60,21 @@ const Accueil = () => {
         <TouchableOpacity style={styles.iconContainer}>
           <MaterialCommunityIcons
             name="map-marker"
-            size={24}
+            size={32}
             color="black"
             onPress={goToMap}
           />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
-          <Ionicons name="home" size={24} color="#EF8536" />
+          <Ionicons name="home" size={32} color="#EF8536" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer} onPress={goToCreditCard}>
-          <FontAwesome name="credit-card-alt" size={20} color="black" />
+          <FontAwesome name="credit-card-alt" size={28} color="black" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
           <Ionicons
             name="person"
-            size={24}
+            size={32}
             color="black"
             onPress={goToProfil}
           />
@@ -95,8 +95,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 10,
     marginTop: StatusBar.currentHeight + 30,
-    marginLeft: 25,
-    marginRight: 25,
+    marginLeft: 15,
+    marginRight: 10,
   },
   circle: {
     width: 40,
@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginHorizontal: 25,
     borderRadius: 20,
+    height:65,
   },
   iconContainer: {
     flex: 1,
