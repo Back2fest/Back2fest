@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Button,
   StatusBar,
+  Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -34,7 +35,9 @@ const Accueil = () => {
     <SafeAreaView style={styles.container}>
       <StatusBar />
       <View style={styles.notificationContainer}>
-        <TouchableOpacity style={styles.circle} />
+        <View style={styles.circle}>
+          <Image source={require("../Img/PhotoProfil.jpeg")} style={styles.image} />
+        </View>
         <TouchableOpacity style={styles.notificationIcon}>
           <Ionicons name="notifications" size={24} color="black" />
         </TouchableOpacity>
@@ -95,14 +98,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 10,
     marginTop: StatusBar.currentHeight + 30,
-    marginLeft: 15,
+    marginLeft: 18,
     marginRight: 10,
   },
   circle: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 45,
+    height: 45,
+    borderRadius: 22.5,
     backgroundColor: "#EF8536",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  image: {
+    width: 45,
+    height: 45,
+    borderRadius: 22.5
   },
   notificationIcon: {
     marginRight: 10,
