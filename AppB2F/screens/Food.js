@@ -13,7 +13,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-const Profil = () => {
+const Food = () => {
   const navigation = useNavigation();
 
 const goToHome = () =>{
@@ -85,4 +85,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Profil;
+export default Food;
