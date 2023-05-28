@@ -37,6 +37,7 @@ const Accueil = () => {
     return (
       <View style={styles.carouselItem}>
         <Image source={item.image} style={[styles.carouselImage, {backgroundColor: item.backgroundColor}]} />
+        <View style={styles.overlay} />
         <Text style={styles.carouselTitle}>{item.title}</Text>
       </View>
     );
@@ -206,6 +207,16 @@ const styles = StyleSheet.create({
   },
   carouselItem: {
     marginRight: 10,
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: 236,
+    height: 187,
+    backgroundColor: 'black',
+    opacity: 0.4,
+    borderRadius: 10,
   },
   carouselImage: {
     width: 236,
