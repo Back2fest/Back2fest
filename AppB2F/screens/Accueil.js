@@ -42,7 +42,7 @@ const Accueil = () => {
             { backgroundColor: item.backgroundColor },
           ]}
         />
-        <View style={styles.overlay} />
+        <View style={styles.overlaycarou} />
         <Text style={[styles.carouselTitle, { textAlign: "center" }]}>
           {item.title}
         </Text>
@@ -100,6 +100,7 @@ const Accueil = () => {
       <View style={styles.content}>
         <View style={styles.actualité}>
           <Image style={styles.actuImg} source={require("../Img/BTS.jpeg")} />
+          <View style={styles.overlayactu} />
         </View>
         <View style={styles.actuInfo}>
           <Text style={styles.actuTxt}> Prochain Concert : BTS </Text>
@@ -203,7 +204,7 @@ const styles = StyleSheet.create({
   carouselItem: {
     marginRight: 10,
   },
-  overlay: {
+  overlaycarou: {
     position: "absolute",
     top: 0,
     left: 0,
@@ -212,6 +213,15 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     opacity: 0.4,
     borderRadius: 10,
+  },
+  overlayactu: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "black",
+    opacity: 0.4,
   },
   carouselImage: {
     width: 236,
