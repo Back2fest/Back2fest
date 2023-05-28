@@ -42,7 +42,7 @@ const Accueil = () => {
             { backgroundColor: item.backgroundColor },
           ]}
         />
-        <View style={styles.overlay} />
+        <View style={styles.overlaycarou} />
         <Text style={[styles.carouselTitle, { textAlign: "center" }]}>
           {item.title}
         </Text>
@@ -73,7 +73,7 @@ const Accueil = () => {
       id: "4",
       title: "BTS",
       image: require("../Img/BTS.png"),
-      backgroundColor: "#",
+      backgroundColor: "#47719B",
     },
     {
       id: "5",
@@ -97,16 +97,18 @@ const Accueil = () => {
           <Ionicons name="notifications" size={24} color="black" />
         </TouchableOpacity>
       </View>
-      <View style={styles.mapContainer}>
-        <View style={styles.map}>
-          <MaterialCommunityIcons
-            name="map-marker"
-            size={100}
-            color="black"
-          />
+      <View style={styles.content}>
+        <View style={styles.actualité}>
+          <Image style={styles.actuImg} source={require("../Img/BTS.jpeg")} />
+          <View style={styles.overlayactu} />
+          <View style={styles.timeCircle}>
+            <Text style={styles.timeText}>5</Text>
+            <Text style={styles.timeText}>min</Text>
+          </View>
         </View>
-      </View>
-      <View style={[styles.content, { flex: 1 }]}>
+        <View style={styles.actuInfo}>
+          <Text style={styles.actuTxt}> Prochain Concert : BTS </Text>
+        </View>
         <Text style={[styles.carouselTitle, { marginTop: 20 }]}>
           Concert pendant le Festival
         </Text>
@@ -117,6 +119,11 @@ const Accueil = () => {
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
         />
+        <TouchableOpacity style={styles.mapContainer} onPress={goToMap}>
+          <View style={styles.mapShadow}>
+            <Image source={require("../Img/Map.png")} style={styles.mapImage} />
+          </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.navBar}>
         <TouchableOpacity style={styles.iconContainer}>
@@ -138,10 +145,7 @@ const Accueil = () => {
         <TouchableOpacity style={styles.iconContainer}>
           <Ionicons name="home" size={32} color="#EF8536" />
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.iconContainer}
-          onPress={goToCreditCard}
-        >
+        <TouchableOpacity style={styles.iconContainer} onPress={goToCreditCard}>
           <FontAwesome name="credit-card-alt" size={28} color="black" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
@@ -193,16 +197,18 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: 25,
+    flex: 1,
+    marginBottom: 20, // Ajout de cette ligne pour supprimer l'espace entre le carousel et la map
   },
   carouselTitle: {
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: 10,
   },
   carouselItem: {
     marginRight: 10,
   },
-  overlay: {
+  overlaycarou: {
     position: "absolute",
     top: 0,
     left: 0,
@@ -212,23 +218,53 @@ const styles = StyleSheet.create({
     opacity: 0.4,
     borderRadius: 10,
   },
+  overlayactu: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "black",
+    opacity: 0.4,
+  },
   carouselImage: {
     width: 236,
     height: 187,
     borderRadius: 10,
   },
   mapContainer: {
-    marginTop: 27,
     justifyContent: "center",
     alignItems: "center",
   },
-  map: {
-    width: 355,
-    height: 173,
+  mapShadow: {
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 5,
+  },
+  mapImage: {
+    width: 340,
+    height: 155,
     borderRadius: 20,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#E6E6E6",
+  },
+  actualité: {
+    marginTop: 25,
+    width: 340,
+    height: 130,
+    borderWidth: 1,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    borderBottomWidth: 0,
+    borderColor: "black",
+    alignSelf: "center",
+    overflow: "hidden",
+  },
+  actuImg: {
+    width: "100%",
+    height: "120%",
+    resizeMode: "cover",
+    borderRadius: 20,
   },
   navBar: {
     flexDirection: "row",
@@ -245,6 +281,39 @@ const styles = StyleSheet.create({
   iconContainer: {
     flex: 1,
     alignItems: "center",
+  },
+  actuInfo: {
+    width: 340,
+    height: 30,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    borderWidth: 1,
+    borderTopWidth: 0,
+    borderColor: "black",
+    borderStyle: "solid",
+  },
+  actuTxt: {
+    fontSize: 18,
+    fontWeight: "bold",
+    alignSelf: "center",
+    marginTop: 3,
+  },
+  timeCircle: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    width: 50,
+    height: 50,
+    borderRadius: 30,
+    borderWidth: 1,
+    borderColor: "#EF8536",
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  timeText: {
+    fontSize: 14,
+    fontWeight: "bold",
   },
 });
 
