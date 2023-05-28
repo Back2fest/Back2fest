@@ -43,7 +43,7 @@ const Accueil = () => {
           ]}
         />
         <View style={styles.overlaycarou} />
-        <Text style={[styles.carouselTitle, { textAlign: "center" }]}>
+        <Text style={styles.carouselArtiste}>
           {item.title}
         </Text>
       </View>
@@ -204,6 +204,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 10,
+  },
+  carouselArtiste: {
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginTop: 3,
   },
   carouselItem: {
     marginRight: 10,
