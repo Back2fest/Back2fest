@@ -97,15 +97,9 @@ const Accueil = () => {
           <Ionicons name="notifications" size={24} color="black" />
         </TouchableOpacity>
       </View>
-      <View style={styles.mapContainer}>
-        <View style={styles.map}>
-          <MaterialCommunityIcons
-            name="map-marker"
-            size={100}
-            color="black"
-          />
-        </View>
-      </View>
+      <TouchableOpacity style={styles.mapContainer} onPress={goToMap}>
+        <Image source={require("../Img/Map.png")} style={styles.mapImage} />
+      </TouchableOpacity>
       <View style={[styles.content, { flex: 1 }]}>
         <Text style={[styles.carouselTitle, { marginTop: 20 }]}>
           Concert pendant le Festival
@@ -138,10 +132,7 @@ const Accueil = () => {
         <TouchableOpacity style={styles.iconContainer}>
           <Ionicons name="home" size={32} color="#EF8536" />
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.iconContainer}
-          onPress={goToCreditCard}
-        >
+        <TouchableOpacity style={styles.iconContainer} onPress={goToCreditCard}>
           <FontAwesome name="credit-card-alt" size={28} color="black" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
@@ -222,13 +213,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  map: {
+  mapImage: {
     width: 355,
     height: 173,
     borderRadius: 20,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#E6E6E6",
   },
   navBar: {
     flexDirection: "row",
