@@ -51,7 +51,6 @@ const Accueil = () => {
     );
   };
 
-
   const carouselData1 = [
     {
       id: "1",
@@ -99,6 +98,15 @@ const Accueil = () => {
           <Ionicons name="notifications" size={24} color="black" />
         </TouchableOpacity>
       </View>
+      <View style={styles.mapContainer}>
+          <View style={styles.map}>
+            <MaterialCommunityIcons
+              name="map-marker"
+              size={100}
+              color="black"
+            />
+          </View>
+        </View>
       <ScrollView style={styles.content}>
         <Text style={[styles.carouselTitle, { marginTop: 20 }]}>
           Concert pendant le Festival
@@ -207,6 +215,19 @@ const styles = StyleSheet.create({
     width: 236,
     height: 187,
     borderRadius: 10,
+  },
+  mapContainer: {
+    marginTop: 27,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  map: {
+    width: 355,
+    height: 173,
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#E6E6E6",
   },
   navBar: {
     flexDirection: "row",
