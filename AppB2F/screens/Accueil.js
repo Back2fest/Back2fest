@@ -9,7 +9,6 @@ import {
   Button,
   StatusBar,
   Image,
-  ScrollView,
   FlatList,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -99,15 +98,15 @@ const Accueil = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.mapContainer}>
-          <View style={styles.map}>
-            <MaterialCommunityIcons
-              name="map-marker"
-              size={100}
-              color="black"
-            />
-          </View>
+        <View style={styles.map}>
+          <MaterialCommunityIcons
+            name="map-marker"
+            size={100}
+            color="black"
+          />
         </View>
-      <ScrollView style={styles.content}>
+      </View>
+      <View style={[styles.content, { flex: 1 }]}>
         <Text style={[styles.carouselTitle, { marginTop: 20 }]}>
           Concert pendant le Festival
         </Text>
@@ -118,7 +117,7 @@ const Accueil = () => {
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
         />
-      </ScrollView>
+      </View>
       <View style={styles.navBar}>
         <TouchableOpacity style={styles.iconContainer}>
           <FontAwesome5
@@ -139,7 +138,10 @@ const Accueil = () => {
         <TouchableOpacity style={styles.iconContainer}>
           <Ionicons name="home" size={32} color="#EF8536" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.iconContainer} onPress={goToCreditCard}>
+        <TouchableOpacity
+          style={styles.iconContainer}
+          onPress={goToCreditCard}
+        >
           <FontAwesome name="credit-card-alt" size={28} color="black" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
@@ -190,7 +192,6 @@ const styles = StyleSheet.create({
     color: "#B3B3B3",
   },
   content: {
-    flex: 1,
     paddingHorizontal: 25,
   },
   carouselTitle: {
