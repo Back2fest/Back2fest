@@ -99,10 +99,7 @@ const Accueil = () => {
       </View>
       <View style={styles.content}>
         <View style={styles.actualité}>
-          <Image
-            source={require("../Img/BTS.jpeg")}
-            style={{ width: "100%", height: "100%",resizeMode: "cover", borderRadius: 20,}}
-          />
+          <Image style={styles.actuImg} source={require("../Img/BTS.jpeg")} />
         </View>
         <Text style={[styles.carouselTitle, { marginTop: 20 }]}>
           Concert pendant le Festival
@@ -243,6 +240,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
     borderColor: "black",
     alignSelf: "center",
+    overflow: "hidden",
+  },
+  actuImg: {
+    width: "100%",
+    height: "120%",
+    resizeMode: "cover",
+    borderRadius: 20,
   },
   navBar: {
     flexDirection: "row",
