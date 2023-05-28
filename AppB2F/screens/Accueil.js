@@ -36,61 +36,52 @@ const Accueil = () => {
   const renderItem = ({ item }) => {
     return (
       <View style={styles.carouselItem}>
-        <Image source={item.image} style={[styles.carouselImage, {backgroundColor: item.backgroundColor}]} />
+        <Image
+          source={item.image}
+          style={[
+            styles.carouselImage,
+            { backgroundColor: item.backgroundColor },
+          ]}
+        />
         <View style={styles.overlay} />
-        <Text style={styles.carouselTitle}>{item.title}</Text>
+        <Text style={[styles.carouselTitle, { textAlign: "center" }]}>
+          {item.title}
+        </Text>
       </View>
     );
   };
 
+
   const carouselData1 = [
     {
       id: "1",
-      title: "Carrousel 1 - Item 1",
+      title: "Daft Punk",
       image: require("../Img/Daft-punk.png"),
-      backgroundColor: '#47719B',
+      backgroundColor: "#47719B",
     },
     {
       id: "2",
-      title: "Carrousel 1 - Item 2",
+      title: "Burna Boy",
       image: require("../Img/Burna-Boy.png"),
-      backgroundColor: '#F4C550',
+      backgroundColor: "#F4C550",
     },
     {
       id: "3",
-      title: "Carrousel 1 - Item 3",
+      title: "Central Cee",
       image: require("../Img/Central-cee.png"),
-      backgroundColor: '#4DB148',
+      backgroundColor: "#4DB148",
     },
     {
       id: "4",
-      title: "Carrousel 1 - Item 4",
+      title: "BTS",
       image: require("../Img/BTS.png"),
-      backgroundColor: '#',
+      backgroundColor: "#",
     },
     {
       id: "5",
-      title: "Carrousel 1 - Item 5",
+      title: "Cat Dealers",
       image: require("../Img/Cat-dealers.png"),
-      backgroundColor: '#A8A8A8',
-    },
-  ];
-
-  const carouselData2 = [
-    {
-      id: "1",
-      title: "Carrousel 2 - Item 1",
-      image: require("../Img/Festival.jpeg"),
-    },
-    {
-      id: "2",
-      title: "Carrousel 2 - Item 2",
-      image: require("../Img/Festival.jpeg"),
-    },
-    {
-      id: "3",
-      title: "Carrousel 2 - Item 3",
-      image: require("../Img/Festival.jpeg"),
+      backgroundColor: "#A8A8A8",
     },
   ];
 
@@ -109,17 +100,11 @@ const Accueil = () => {
         </TouchableOpacity>
       </View>
       <ScrollView style={styles.content}>
-        <Text style={[styles.carouselTitle, { marginTop: 20 }]}>Concert pendant le Festival</Text>
+        <Text style={[styles.carouselTitle, { marginTop: 20 }]}>
+          Concert pendant le Festival
+        </Text>
         <FlatList
           data={carouselData1}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
-        <Text style={styles.carouselTitle}>Activité du Festival</Text>
-        <FlatList
-          data={carouselData2}
           horizontal
           showsHorizontalScrollIndicator={false}
           renderItem={renderItem}
@@ -209,12 +194,12 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   overlay: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
     width: 236,
     height: 187,
-    backgroundColor: 'black',
+    backgroundColor: "black",
     opacity: 0.4,
     borderRadius: 10,
   },
