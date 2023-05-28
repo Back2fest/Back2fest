@@ -101,7 +101,9 @@ const Accueil = () => {
         <View style={styles.actualité}>
           <Image style={styles.actuImg} source={require("../Img/BTS.jpeg")} />
         </View>
-        <View style={styles.actuInfo} />
+        <View style={styles.actuInfo}>
+          <Text style={styles.actuTxt}> Prochain Concert : BTS </Text>
+        </View>
         <Text style={[styles.carouselTitle, { marginTop: 20 }]}>
           Concert pendant le Festival
         </Text>
@@ -191,12 +193,12 @@ const styles = StyleSheet.create({
   content: {
     paddingHorizontal: 25,
     flex: 1,
-    marginBottom: 15, // Ajout de cette ligne pour supprimer l'espace entre le carousel et la map
+    marginBottom: 20, // Ajout de cette ligne pour supprimer l'espace entre le carousel et la map
   },
   carouselTitle: {
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: 10,
   },
   carouselItem: {
     marginRight: 10,
@@ -275,6 +277,12 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
     borderColor: "black",
     borderStyle: "solid",
+  },
+  actuTxt: {
+    fontSize: 18,
+    fontWeight: "bold",
+    alignSelf: "center",
+    marginTop: 3,
   },
 });
 
