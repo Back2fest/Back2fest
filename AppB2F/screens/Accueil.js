@@ -101,6 +101,10 @@ const Accueil = () => {
         <View style={styles.actualité}>
           <Image style={styles.actuImg} source={require("../Img/BTS.jpeg")} />
           <View style={styles.overlayactu} />
+          <View style={styles.timeCircle}>
+            <Text style={styles.timeText}>5</Text>
+            <Text style={styles.timeText}>min</Text>
+          </View>
         </View>
         <View style={styles.actuInfo}>
           <Text style={styles.actuTxt}> Prochain Concert : BTS </Text>
@@ -293,6 +297,23 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignSelf: "center",
     marginTop: 3,
+  },
+  timeCircle: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    width: 50,
+    height: 50,
+    borderRadius: 30,
+    borderWidth: 1,
+    borderColor: "#EF8536",
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  timeText: {
+    fontSize: 14,
+    fontWeight: "bold",
   },
 });
 
