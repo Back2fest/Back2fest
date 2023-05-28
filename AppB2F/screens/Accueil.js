@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
   content: {
     paddingHorizontal: 25,
     flex: 1,
-    marginBottom: 20, // Ajout de cette ligne pour supprimer l'espace entre le carousel et la map
+    marginBottom: 28, // Ajout de cette ligne pour supprimer l'espace entre le carousel et la map
   },
   carouselTitle: {
     fontSize: 20,
