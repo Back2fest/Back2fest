@@ -97,10 +97,13 @@ const Accueil = () => {
           <Ionicons name="notifications" size={24} color="black" />
         </TouchableOpacity>
       </View>
-      <View style={[styles.content, { flex: 1 }]}>
-        <TouchableOpacity style={styles.mapContainer} onPress={goToMap}>
-          <Image source={require("../Img/Map.png")} style={styles.mapImage} />
-        </TouchableOpacity>
+      <View style={styles.content}>
+        <View style={styles.actualité}>
+          <Image
+            source={require("../Img/BTS.jpeg")}
+            style={{ width: "100%", height: "100%",resizeMode: "cover", borderRadius: 20,}}
+          />
+        </View>
         <Text style={[styles.carouselTitle, { marginTop: 20 }]}>
           Concert pendant le Festival
         </Text>
@@ -111,6 +114,11 @@ const Accueil = () => {
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
         />
+        <TouchableOpacity style={styles.mapContainer} onPress={goToMap}>
+          <View style={styles.mapShadow}>
+            <Image source={require("../Img/Map.png")} style={styles.mapImage} />
+          </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.navBar}>
         <TouchableOpacity style={styles.iconContainer}>
@@ -184,6 +192,8 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: 25,
+    flex: 1,
+    marginBottom: 20, // Ajout de cette ligne pour supprimer l'espace entre le carousel et la map
   },
   carouselTitle: {
     fontSize: 20,
@@ -209,14 +219,30 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   mapContainer: {
-    marginTop: 27,
     justifyContent: "center",
     alignItems: "center",
   },
+  mapShadow: {
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+  },
   mapImage: {
-    width: 355,
-    height: 173,
+    width: 340,
+    height: 155,
     borderRadius: 20,
+  },
+  actualité: {
+    marginTop: 25,
+    width: 340,
+    height: 130,
+    borderWidth: 1,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    borderBottomWidth: 0,
+    borderColor: "black",
+    alignSelf: "center",
   },
   navBar: {
     flexDirection: "row",
