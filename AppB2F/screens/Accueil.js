@@ -107,7 +107,7 @@ const Accueil = () => {
           </View>
         </View>
         <View style={styles.actuInfo}>
-          <Text style={styles.actuTxt}> Prochain Concert : BTS </Text>
+          <Text style={styles.actuTxt}>Prochain Concert : BTS</Text>
         </View>
         <Text style={[styles.carouselTitle, { marginTop: 20 }]}>
           Concert pendant le Festival
@@ -209,10 +209,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
-    marginTop: 3,
+    position: "absolute",
+    top: "60%",
+    left: "53%",
+    transform: [{ translateX: -50 }, { translateY: -50 }],
+    color: "white",
   },
   carouselItem: {
     marginRight: 10,
+    position: "relative",
   },
   overlaycarou: {
     position: "absolute",
@@ -268,7 +273,7 @@ const styles = StyleSheet.create({
   },
   actuImg: {
     width: "100%",
-    height: "120%",
+    height: "125%",
     resizeMode: "cover",
     borderRadius: 20,
   },
