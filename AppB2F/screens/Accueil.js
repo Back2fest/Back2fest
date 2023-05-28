@@ -101,6 +101,7 @@ const Accueil = () => {
         <View style={styles.actualité}>
           <Image style={styles.actuImg} source={require("../Img/BTS.jpeg")} />
         </View>
+        <View style={styles.actuInfo} />
         <Text style={[styles.carouselTitle, { marginTop: 20 }]}>
           Concert pendant le Festival
         </Text>
@@ -190,7 +191,7 @@ const styles = StyleSheet.create({
   content: {
     paddingHorizontal: 25,
     flex: 1,
-    marginBottom: 30, // Ajout de cette ligne pour supprimer l'espace entre le carousel et la map
+    marginBottom: 15, // Ajout de cette ligne pour supprimer l'espace entre le carousel et la map
   },
   carouselTitle: {
     fontSize: 20,
@@ -264,6 +265,16 @@ const styles = StyleSheet.create({
   iconContainer: {
     flex: 1,
     alignItems: "center",
+  },
+  actuInfo: {
+    width: 340,
+    height: 30,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    borderWidth: 1,
+    borderTopWidth: 0,
+    borderColor: "black",
+    borderStyle: "solid",
   },
 });
 
