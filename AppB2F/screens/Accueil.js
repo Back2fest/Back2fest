@@ -8,6 +8,8 @@ import {
   StyleSheet,
   Button,
   StatusBar,
+  Image,
+  FlatList,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -30,23 +32,91 @@ const Accueil = () => {
     navigation.navigate("Food");
   };
 
+  const renderItem = ({ item }) => {
+    return (
+      <View style={styles.carouselItem}>
+        <Image
+          source={item.image}
+          style={[
+            styles.carouselImage,
+            { backgroundColor: item.backgroundColor },
+          ]}
+        />
+        <View style={styles.overlay} />
+        <Text style={[styles.carouselTitle, { textAlign: "center" }]}>
+          {item.title}
+        </Text>
+      </View>
+    );
+  };
+
+  const carouselData1 = [
+    {
+      id: "1",
+      title: "Daft Punk",
+      image: require("../Img/Daft-punk.png"),
+      backgroundColor: "#47719B",
+    },
+    {
+      id: "2",
+      title: "Burna Boy",
+      image: require("../Img/Burna-Boy.png"),
+      backgroundColor: "#F4C550",
+    },
+    {
+      id: "3",
+      title: "Central Cee",
+      image: require("../Img/Central-cee.png"),
+      backgroundColor: "#4DB148",
+    },
+    {
+      id: "4",
+      title: "BTS",
+      image: require("../Img/BTS.png"),
+      backgroundColor: "#",
+    },
+    {
+      id: "5",
+      title: "Cat Dealers",
+      image: require("../Img/Cat-dealers.png"),
+      backgroundColor: "#A8A8A8",
+    },
+  ];
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar />
       <View style={styles.notificationContainer}>
-        <TouchableOpacity style={styles.circle} />
+        <View style={styles.circle}>
+          <Image
+            source={require("../Img/PhotoProfil.jpeg")}
+            style={styles.imagecircle}
+          />
+        </View>
         <TouchableOpacity style={styles.notificationIcon}>
           <Ionicons name="notifications" size={24} color="black" />
         </TouchableOpacity>
       </View>
-      <View style={styles.searchBar}>
-        <Ionicons name="search" size={24} color="black" style={styles.searchIcon} />
-        <Text style={styles.searchText}>Rechercher</Text>
-        <Ionicons name="filter" size={24} color="black" style={styles.filterIcon} />
+      <View style={styles.mapContainer}>
+        <View style={styles.map}>
+          <MaterialCommunityIcons
+            name="map-marker"
+            size={100}
+            color="black"
+          />
+        </View>
       </View>
-      <View style={styles.content}>
-        <Text>This is Home</Text>
-        <Button onPress={goToCreditCard} title="Va sur le deuxième écran" />
+      <View style={[styles.content, { flex: 1 }]}>
+        <Text style={[styles.carouselTitle, { marginTop: 20 }]}>
+          Concert pendant le Festival
+        </Text>
+        <FlatList
+          data={carouselData1}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
       </View>
       <View style={styles.navBar}>
         <TouchableOpacity style={styles.iconContainer}>
@@ -68,7 +138,10 @@ const Accueil = () => {
         <TouchableOpacity style={styles.iconContainer}>
           <Ionicons name="home" size={32} color="#EF8536" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.iconContainer} onPress={goToCreditCard}>
+        <TouchableOpacity
+          style={styles.iconContainer}
+          onPress={goToCreditCard}
+        >
           <FontAwesome name="credit-card-alt" size={28} color="black" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
@@ -94,45 +167,68 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 10,
-    marginTop: StatusBar.currentHeight + 30,
-    marginLeft: 15,
+    marginTop: StatusBar.currentHeight + 10,
+    marginLeft: 18,
     marginRight: 10,
   },
   circle: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 45,
+    height: 45,
+    borderRadius: 22.5,
     backgroundColor: "#EF8536",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  imagecircle: {
+    width: 45,
+    height: 45,
+    borderRadius: 22.5,
   },
   notificationIcon: {
     marginRight: 10,
   },
-  searchBar: {
-    marginTop: 40,
-    flexDirection: "row",
-    height: 65,
-    marginHorizontal: 25,
-    borderRadius: 20,
-    borderColor: 'black',
-    borderWidth: 1,
-    alignItems: "center",
-    paddingHorizontal: 15,
-  },
-  searchIcon: {
-    marginRight: 10,
-  },
-  searchText: {
-    flex: 1,
-    color:'#B3B3B3'
-  },
   filterIcon: {
     marginLeft: 10,
-    color: '#B3B3B3',
+    color: "#B3B3B3",
   },
   content: {
-    flex: 1,
+    paddingHorizontal: 25,
+  },
+  carouselTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+  carouselItem: {
+    marginRight: 10,
+  },
+  overlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: 236,
+    height: 187,
+    backgroundColor: "black",
+    opacity: 0.4,
+    borderRadius: 10,
+  },
+  carouselImage: {
+    width: 236,
+    height: 187,
+    borderRadius: 10,
+  },
+  mapContainer: {
+    marginTop: 27,
     justifyContent: "center",
     alignItems: "center",
+  },
+  map: {
+    width: 355,
+    height: 173,
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#E6E6E6",
   },
   navBar: {
     flexDirection: "row",
@@ -144,7 +240,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginHorizontal: 25,
     borderRadius: 20,
-    height:65,
+    height: 65,
   },
   iconContainer: {
     flex: 1,
