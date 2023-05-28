@@ -97,10 +97,10 @@ const Accueil = () => {
           <Ionicons name="notifications" size={24} color="black" />
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.mapContainer} onPress={goToMap}>
-        <Image source={require("../Img/Map.png")} style={styles.mapImage} />
-      </TouchableOpacity>
       <View style={[styles.content, { flex: 1 }]}>
+        <TouchableOpacity style={styles.mapContainer} onPress={goToMap}>
+          <Image source={require("../Img/Map.png")} style={styles.mapImage} />
+        </TouchableOpacity>
         <Text style={[styles.carouselTitle, { marginTop: 20 }]}>
           Concert pendant le Festival
         </Text>
