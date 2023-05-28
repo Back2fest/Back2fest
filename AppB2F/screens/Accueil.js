@@ -9,6 +9,8 @@ import {
   Button,
   StatusBar,
   Image,
+  ScrollView,
+  FlatList,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -31,26 +33,98 @@ const Accueil = () => {
     navigation.navigate("Food");
   };
 
+  const renderItem = ({ item }) => {
+    return (
+      <View style={styles.carouselItem}>
+        <Image source={item.image} style={[styles.carouselImage, {backgroundColor: item.backgroundColor}]} />
+        <Text style={styles.carouselTitle}>{item.title}</Text>
+      </View>
+    );
+  };
+
+  const carouselData1 = [
+    {
+      id: "1",
+      title: "Carrousel 1 - Item 1",
+      image: require("../Img/Daft-punk.png"),
+      backgroundColor: '#47719B',
+    },
+    {
+      id: "2",
+      title: "Carrousel 1 - Item 2",
+      image: require("../Img/Burna-Boy.png"),
+      backgroundColor: '#F4C550',
+    },
+    {
+      id: "3",
+      title: "Carrousel 1 - Item 3",
+      image: require("../Img/Central-cee.png"),
+      backgroundColor: '#4DB148',
+    },
+    {
+      id: "4",
+      title: "Carrousel 1 - Item 4",
+      image: require("../Img/BTS.png"),
+      backgroundColor: '#',
+    },
+    {
+      id: "5",
+      title: "Carrousel 1 - Item 5",
+      image: require("../Img/Cat-dealers.png"),
+      backgroundColor: '#A8A8A8',
+    },
+  ];
+
+  const carouselData2 = [
+    {
+      id: "1",
+      title: "Carrousel 2 - Item 1",
+      image: require("../Img/Festival.jpeg"),
+    },
+    {
+      id: "2",
+      title: "Carrousel 2 - Item 2",
+      image: require("../Img/Festival.jpeg"),
+    },
+    {
+      id: "3",
+      title: "Carrousel 2 - Item 3",
+      image: require("../Img/Festival.jpeg"),
+    },
+  ];
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar />
       <View style={styles.notificationContainer}>
         <View style={styles.circle}>
-          <Image source={require("../Img/PhotoProfil.jpeg")} style={styles.image} />
+          <Image
+            source={require("../Img/PhotoProfil.jpeg")}
+            style={styles.imagecircle}
+          />
         </View>
         <TouchableOpacity style={styles.notificationIcon}>
           <Ionicons name="notifications" size={24} color="black" />
         </TouchableOpacity>
       </View>
-      <View style={styles.searchBar}>
-        <Ionicons name="search" size={24} color="black" style={styles.searchIcon} />
-        <Text style={styles.searchText}>Rechercher</Text>
-        <Ionicons name="filter" size={24} color="black" style={styles.filterIcon} />
-      </View>
-      <View style={styles.content}>
-        <Text>This is Home</Text>
-        <Button onPress={goToCreditCard} title="Va sur le deuxième écran" />
-      </View>
+      <ScrollView style={styles.content}>
+        <Text style={[styles.carouselTitle, { marginTop: 20 }]}>Concert pendant le Festival</Text>
+        <FlatList
+          data={carouselData1}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
+        <Text style={styles.carouselTitle}>Activité du Festival</Text>
+        <FlatList
+          data={carouselData2}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
+      </ScrollView>
       <View style={styles.navBar}>
         <TouchableOpacity style={styles.iconContainer}>
           <FontAwesome5
@@ -97,7 +171,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 10,
-    marginTop: StatusBar.currentHeight + 30,
+    marginTop: StatusBar.currentHeight + 10,
     marginLeft: 18,
     marginRight: 10,
   },
@@ -109,40 +183,34 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  image: {
+  imagecircle: {
     width: 45,
     height: 45,
-    borderRadius: 22.5
+    borderRadius: 22.5,
   },
   notificationIcon: {
     marginRight: 10,
   },
-  searchBar: {
-    marginTop: 40,
-    flexDirection: "row",
-    height: 65,
-    marginHorizontal: 25,
-    borderRadius: 20,
-    borderColor: 'black',
-    borderWidth: 1,
-    alignItems: "center",
-    paddingHorizontal: 15,
-  },
-  searchIcon: {
-    marginRight: 10,
-  },
-  searchText: {
-    flex: 1,
-    color:'#B3B3B3'
-  },
   filterIcon: {
     marginLeft: 10,
-    color: '#B3B3B3',
+    color: "#B3B3B3",
   },
   content: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    paddingHorizontal: 25,
+  },
+  carouselTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+  carouselItem: {
+    marginRight: 10,
+  },
+  carouselImage: {
+    width: 236,
+    height: 187,
+    borderRadius: 10,
   },
   navBar: {
     flexDirection: "row",
@@ -154,7 +222,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginHorizontal: 25,
     borderRadius: 20,
-    height:65,
+    height: 65,
   },
   iconContainer: {
     flex: 1,
