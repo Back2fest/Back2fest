@@ -73,7 +73,7 @@ const Accueil = () => {
       id: "4",
       title: "BTS",
       image: require("../Img/BTS.png"),
-      backgroundColor: "#",
+      backgroundColor: "#47719B",
     },
     {
       id: "5",
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
   content: {
     paddingHorizontal: 25,
     flex: 1,
-    marginBottom: 20, // Ajout de cette ligne pour supprimer l'espace entre le carousel et la map
+    marginBottom: 30, // Ajout de cette ligne pour supprimer l'espace entre le carousel et la map
   },
   carouselTitle: {
     fontSize: 20,
@@ -224,6 +224,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.2,
     shadowRadius: 5,
+    elevation: 5,
   },
   mapImage: {
     width: 340,
