@@ -129,8 +129,8 @@ const styles = StyleSheet.create({
     bottom: -100,
     zIndex: 100,
     width: "100%",
-    height: 350,
-    backgroundColor: "white", // Utilisez la même couleur que celle de l'écran principal #f2f2f2
+    height: 420,
+    backgroundColor: "#f2f2f2", // Utilisez la même couleur que celle de l'écran principal #f2f2f2
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     shadowColor: "#000",
