@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     backgroundColor: "#f2f2f2",
+    zIndex: 200,
     borderWidth: 1,
     borderColor: "black",
     paddingVertical: 10,
