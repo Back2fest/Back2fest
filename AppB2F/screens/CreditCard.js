@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/core";
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -7,6 +7,8 @@ import {
   Button,
   StyleSheet,
   TouchableOpacity,
+  Modal,
+  Dimensions,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -15,44 +17,78 @@ import { FontAwesome5 } from "@expo/vector-icons";
 
 const CreditCard = () => {
   const navigation = useNavigation();
+  const [modalVisible, setModalVisible] = useState(false);
 
-const goToHome = () =>{
+  const goToHome = () => {
     navigation.navigate("Accueil");
-}
-const goToProfil = () =>{
+  };
+  const goToProfil = () => {
     navigation.navigate("Profil");
-}
-const goToMap = () =>{
+  };
+  const goToMap = () => {
     navigation.navigate("Map");
-}
-const goToFood = () =>{
+  };
+  const goToFood = () => {
     navigation.navigate("Food");
-}
+  };
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <Text>This is the CreditCard Screen</Text>
-        <Button
-          onPress={() => navigation.navigate("Modal")}
-          title="Ouvre le Modal"
-        />
+        <Button onPress={openModal} title="Ouvre le Modal" />
       </View>
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={closeModal}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalText}>Modal Content</Text>
+            <Button onPress={closeModal} title="Close Modal" />
+          </View>
+        </View>
+      </Modal>
       <View style={styles.navBar}>
         <TouchableOpacity style={styles.iconContainer}>
-          <FontAwesome5 name="shopping-basket" size={32} color="black" onPress={goToFood}/>
+          <FontAwesome5
+            name="shopping-basket"
+            size={32}
+            color="black"
+            onPress={goToFood}
+          />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
-          <MaterialCommunityIcons name="map-marker" size={32} color="black" onPress={goToMap}/>
+          <MaterialCommunityIcons
+            name="map-marker"
+            size={32}
+            color="black"
+            onPress={goToMap}
+          />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
-          <Ionicons name="home" size={32} color="black" onPress={goToHome}/>
+          <Ionicons name="home" size={32} color="black" onPress={goToHome} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
           <FontAwesome name="credit-card-alt" size={28} color="#EF8536" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>
-          <Ionicons name="person" size={32} color="black" onPress={goToProfil}/>
+          <Ionicons
+            name="person"
+            size={32}
+            color="black"
+            onPress={goToProfil}
+          />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -85,6 +121,25 @@ const styles = StyleSheet.create({
   iconContainer: {
     flex: 1,
     alignItems: "center",
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    backgroundColor: "white",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height / 2,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    padding: 20,
+  },
+  modalText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
   },
 });
 
