@@ -65,6 +65,7 @@ const Map = () => {
         <MapView style={styles.map} region={mapRegion}>
           <Marker coordinate={mapRegion} title="Marker" />
         </MapView>
+        <View style={styles.rectangle}></View>
       </View>
       <View style={styles.navBar}>
         <TouchableOpacity style={styles.iconContainer} onPress={goToFood}>
@@ -107,12 +108,31 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    position: "relative",
   },
   map: {
     width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+    height: Dimensions.get("window").height -250,
+    position: 'relative', 
+    top: -50,
+  },
+  rectangle: {
+    position: "absolute",
+    bottom: -100,
+    zIndex: 100,
+    width: "100%",
+    height: 350,
+    backgroundColor: "white", // Utilisez la même couleur que celle de l'écran principal #f2f2f2
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+    elevation: 5,
   },
   navBar: {
     flexDirection: "row",
