@@ -8,6 +8,7 @@ import {
   Text,
   SafeAreaView,
   Button,
+  Modal,
   StyleSheet,
   TouchableOpacity,
   Dimensions,
@@ -28,11 +29,18 @@ const Map = () => {
   });
   const [errorMsg, setErrorMsg] = useState("");
   const [searchText, setSearchText] = useState("");
-  const [filteredButtons, setFilteredButtons] = useState([]);
+  const [filteredButtons, setFilteredButtons] = useState([]); // Initialise avec une valeur vide
+  const [modalVisible, setModalVisible] = useState(false);
 
   const buttons = [
-    { label: "Camping", icon: <FontAwesome5 name="campground" size={16} color="black" /> },
-    { label: "Toilettes", icon: <FontAwesome5 name="toilet" size={16} color="black" /> },
+    {
+      label: "Camping",
+      icon: <FontAwesome5 name="campground" size={16} color="black" />,
+    },
+    {
+      label: "Toilettes",
+      icon: <FontAwesome5 name="toilet" size={16} color="black" />,
+    },
     { label: "Stand", icon: <Entypo name="shop" size={24} color="black" /> },
   ];
 
@@ -52,8 +60,17 @@ const Map = () => {
     navigation.navigate("Food");
   };
 
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
   useEffect(() => {
     userLocation();
+    setFilteredButtons(buttons); // Initialise le state avec la valeur des boutons
   }, []);
 
   const userLocation = async () => {
@@ -109,11 +126,36 @@ const Map = () => {
               </TouchableOpacity>
             ))}
           </View>
-          <TouchableOpacity style={styles.buttonSOS}>
+          <TouchableOpacity style={styles.buttonSOS} onPress={openModal}>
             <Text style={styles.bigbuttonSOSText}>SOS</Text>
           </TouchableOpacity>
         </View>
       </View>
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        animationType="none"
+        onRequestClose={closeModal}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalText}>Localisation d'urgence</Text>
+            <Text style={styles.modalTextdesc}>
+              Vous avez appuyé sur le bouton SOS réservé aux urgences, un
+              message d’alerte sera envoyé aux services de sécurité et de santé,
+              souhaitez-vous continuer ?
+            </Text>
+            <View style={styles.buttonContainerMod}>
+              <TouchableOpacity style={styles.buttonYes}>
+                <Text style={styles.buttonTextmod}>Oui</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.buttonNo} onPress={closeModal}>
+                <Text style={styles.buttonTextmod}>Non</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
       <View style={styles.navBar}>
         <TouchableOpacity style={styles.iconContainer} onPress={goToFood}>
           <FontAwesome5 name="shopping-basket" size={32} color="black" />
@@ -213,9 +255,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  buttonText: {
-    marginRight: 5,
-  },
   buttonSOS: {
     backgroundColor: "#EF8536",
     borderRadius: 30,
@@ -230,7 +269,63 @@ const styles = StyleSheet.create({
     marginTop: 12,
     color: "white",
     fontWeight: "bold",
-    textAlign: "center", // Ajout de la propriété textAlign
+    textAlign: "center",
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    backgroundColor: "white",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height / 2,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    padding: 20,
+  },
+  modalText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 20,
+    marginTop: 10,
+  },
+  modalTextdesc: {
+    fontSize: 16,
+    marginTop: 30,
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  buttonYes: {
+    borderWidth: 2,
+    borderColor: "#EF8536",
+    borderRadius: 30,
+    padding: 10,
+    marginLeft: 50,
+  },
+  buttonNo: {
+    borderWidth: 2,
+    borderColor: "#EF8536",
+    borderRadius: 30,
+    padding: 10,
+    marginRight: 50,
+  },
+  buttonText: {
+    color: "black",
+    fontWeight: "bold",
+    paddingRight: 5,
+  },
+  buttonTextmod: {
+    color: "black",
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  buttonContainerMod: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    paddingHorizontal: 20,
+    marginTop: 50,
   },
 });
 
