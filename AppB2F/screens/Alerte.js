@@ -100,12 +100,12 @@ const Alerte = () => {
             Etat de l’alerte : <Text style={styles.alerteEtat}> ACTIVE</Text>
           </Text>
         </View>
-        <View style={styles.buttonContainer}>
+      </View>
+      <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.buttonSOS}>
             <Text style={styles.bigbuttonSOSText}>Scanner le bracelet pour envoyer</Text>
           </TouchableOpacity>
         </View>
-      </View>
     </SafeAreaView>
   );
 };
@@ -182,12 +182,14 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     alignItems: "center",
-    marginTop: 40,
+    marginBottom: 100,
+    marginLeft: 40,
+    marginRight: 40,
   },
   buttonSOS: {
     backgroundColor: "#EF8536",
     borderRadius: 30,
-    padding: 20,
+    padding: 10,
     height: 90,
     width: "100%",
     alignItems: "center",
@@ -195,7 +197,6 @@ const styles = StyleSheet.create({
   },
   bigbuttonSOSText: {
     fontSize: 20,
-    marginTop: 12,
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
