@@ -139,8 +139,13 @@ const Map = () => {
       >
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
-            <Text style={styles.modalText}>Modal Content</Text>
-            <Button onPress={closeModal} title="Close Modal" />
+            <Text style={styles.modalText}>Localisation d'urgence</Text>
+            <Text style={styles.modalTextdesc}>
+              Vous avez appuyé sur le bouton SOS réservé aux urgences, un
+              message d’alerte sera envoyé aux services de sécurité et de santé,
+              souhaitez vous continuer ?
+            </Text>
+            <Button onPress={closeModal} title="Fermer" />
           </View>
         </View>
       </Modal>
@@ -280,6 +285,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
+  },
+  modalTextdesc: {
+    fontSize: 16,
+    marginBottom: 10,
+    textAlign: "center", // Ajout de la propriété textAlign
+    marginTop: 10,
   },
 });
 
