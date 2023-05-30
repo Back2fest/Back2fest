@@ -76,10 +76,14 @@ const Map = () => {
 
   const handleSearch = (text) => {
     setSearchText(text);
-    const filtered = buttons.filter((button) =>
-      button.label.toLowerCase().includes(text.toLowerCase())
-    );
-    setFilteredButtons(filtered);
+    if (text === "") {
+      setFilteredButtons(buttons);
+    } else {
+      const filtered = buttons.filter((button) =>
+        button.label.toLowerCase().includes(text.toLowerCase())
+      );
+      setFilteredButtons(filtered);
+    }
   };
 
   return (
