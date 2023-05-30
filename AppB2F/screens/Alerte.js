@@ -9,6 +9,7 @@ import {
   Dimensions,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
@@ -128,13 +129,10 @@ const Alerte = () => {
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalText}>Scan du bracelet</Text>
-            
+            <MaterialCommunityIcons name="nfc" style={styles.nfcicon} size={250} color="#EF8536" />
             <View style={styles.buttonContainerMod}>
-              <TouchableOpacity style={styles.buttonYes}>
-                <Text style={styles.buttonTextmod}>Oui</Text>
-              </TouchableOpacity>
               <TouchableOpacity style={styles.buttonNo} onPress={closeModal}>
-                <Text style={styles.buttonTextmod}>Non</Text>
+                <Text style={styles.buttonTextmod}>Fermer le scan</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -252,28 +250,18 @@ const styles = StyleSheet.create({
   modalText: {
     fontSize: 18,
     fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: 10,
     marginTop: 10,
-  },
-  modalTextdesc: {
-    fontSize: 16,
-    marginTop: 30,
-    marginBottom: 20,
-    textAlign: "center",
-  },
-  buttonYes: {
-    borderWidth: 2,
-    borderColor: "#EF8536",
-    borderRadius: 30,
-    padding: 10,
-    marginLeft: 50,
   },
   buttonNo: {
     borderWidth: 2,
     borderColor: "#EF8536",
     borderRadius: 30,
     padding: 10,
-    marginRight: 50,
+  },
+  nfcicon: {
+    justifyContent: "center",
+    alignSelf: "center",
   },
   buttonText: {
     color: "black",
@@ -289,7 +277,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     paddingHorizontal: 20,
-    marginTop: 50,
+    marginTop: 10,
   },
 });
 
