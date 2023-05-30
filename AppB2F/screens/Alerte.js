@@ -21,6 +21,7 @@ const Alerte = () => {
   });
 
   const [errorMsg, setErrorMsg] = useState("");
+  const [userAddress, setUserAddress] = useState("");
 
   const goBack = () => {
     navigation.goBack();
@@ -45,7 +46,16 @@ const Alerte = () => {
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
     });
-    console.log(location.coords.latitude, location.coords.longitude);
+
+    // Reverse geocoding to get approximate address
+    let geocode = await Location.reverseGeocodeAsync({
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
+    });
+    if (geocode.length > 0) {
+      const address = `${geocode[0].name}, ${geocode[0].city}, ${geocode[0].region}, ${geocode[0].postalCode}, ${geocode[0].country}`;
+      setUserAddress(address);
+    }
   };
 
   return (
@@ -60,6 +70,18 @@ const Alerte = () => {
         <MapView style={styles.map} region={mapRegion}>
           <Marker coordinate={mapRegion} title="Votre Position" />
         </MapView>
+      </View>
+      <View style={styles.alertInfo}>
+        <View style={styles.info} >
+        <Text style={styles.addresseLabel}>Adresse approximative : <Text style={styles.adresseInfo}>34 Rue Voltaire,</Text></Text>
+        {/* <Text style={styles.userAddress}>{userAddress}</Text> */}
+        <Text style={styles.adresseInfo}>
+        34070, Montpellier, France
+        </Text>
+        </View>
+        <View style={styles.info}>
+        <Text style={styles.addresseLabel}>Date et l'heure de l'alerte :</Text>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -100,8 +122,31 @@ const styles = StyleSheet.create({
   },
   map: {
     width: "100%",
-    height: "100%%",
+    height: "100%",
     borderRadius: 30,
+  },
+  alertInfo: {
+    marginTop: 40,
+    alignItems: "flex-start",
+    marginLeft: 40,
+  },
+  addresseLabel: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 5,
+  },
+  userAddress: {
+    fontSize: 16,
+    color: "black",
+    fontWeight: "bold",
+  },
+  adresseInfo: {
+    fontSize: 16,
+    color: "black",
+    fontWeight: 'regular',
+  },
+  info: {
+    paddingBottom: 35,
   },
 });
 
