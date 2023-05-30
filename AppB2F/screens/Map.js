@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/core";
 import MapView, { Marker } from "react-native-maps";
 import React, { useState, useEffect } from "react";
+import { Entypo } from "@expo/vector-icons";
 import * as Location from "expo-location";
 import {
   View,
@@ -77,16 +78,16 @@ const Map = () => {
           </View>
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Button 1</Text>
-              <FontAwesome name="arrow-right" size={16} color="black" />
+              <Text style={styles.buttonText}>Camping</Text>
+              <FontAwesome5 name="campground" size={16} color="black" />
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Button 2</Text>
-              <FontAwesome name="arrow-right" size={16} color="black" />
+              <Text style={styles.buttonText}>Toilettes</Text>
+              <FontAwesome5 name="toilet" size={16} color="black" />
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Button 3</Text>
-              <FontAwesome name="arrow-right" size={16} color="black" />
+              <Text style={styles.buttonText}>Stand</Text>
+              <Entypo name="shop" size={24} color="black" />
             </TouchableOpacity>
           </View>
         </View>
@@ -180,11 +181,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: 20,
-    marginBottom: 20,
+    marginTop: 80,
   },
   button: {
     borderWidth: 1,
-    borderColor: "#EF8536",
+    borderColor: "black",
     borderRadius: 20,
     padding: 10,
     flexDirection: "row",
