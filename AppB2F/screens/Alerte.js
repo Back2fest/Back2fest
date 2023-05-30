@@ -22,6 +22,7 @@ const Alerte = () => {
 
   const [errorMsg, setErrorMsg] = useState("");
   const [userAddress, setUserAddress] = useState("");
+  const [alertDateTime, setAlertDateTime] = useState("");
 
   const goBack = () => {
     navigation.goBack();
@@ -29,6 +30,7 @@ const Alerte = () => {
 
   useEffect(() => {
     userLocation();
+    setAlertDateTime(getCurrentDateTime());
   }, []);
 
   const userLocation = async () => {
@@ -58,6 +60,13 @@ const Alerte = () => {
     }
   };
 
+  const getCurrentDateTime = () => {
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString();
+    const formattedTime = currentDate.toLocaleTimeString();
+    return `${formattedDate}, ${formattedTime}`;
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -72,15 +81,19 @@ const Alerte = () => {
         </MapView>
       </View>
       <View style={styles.alertInfo}>
-        <View style={styles.info} >
-        <Text style={styles.addresseLabel}>Adresse approximative : <Text style={styles.adresseInfo}>34 Rue Voltaire,</Text></Text>
-        {/* <Text style={styles.userAddress}>{userAddress}</Text> */}
-        <Text style={styles.adresseInfo}>
-        34070, Montpellier, France
-        </Text>
+        <View style={styles.info}>
+          <Text style={styles.addresseLabel}>
+            Adresse approximative :{" "}
+            <Text style={styles.adresseInfo}>34 Rue Voltaire,</Text>
+          </Text>
+          {/* <Text style={styles.userAddress}>{userAddress}</Text> */}
+          <Text style={styles.adresseInfo}>34070, Montpellier, France</Text>
         </View>
         <View style={styles.info}>
-        <Text style={styles.addresseLabel}>Date et l'heure de l'alerte :</Text>
+          <Text style={styles.addresseLabel}>
+            Date et l'heure de l'alerte :{" "}
+            <Text style={styles.adresseInfo}>{alertDateTime}</Text>
+          </Text>
         </View>
       </View>
     </SafeAreaView>
@@ -143,7 +156,7 @@ const styles = StyleSheet.create({
   adresseInfo: {
     fontSize: 16,
     color: "black",
-    fontWeight: 'regular',
+    fontWeight: "normal",
   },
   info: {
     paddingBottom: 35,
