@@ -10,6 +10,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
+import { format } from "date-fns";
+import { fr } from "date-fns/locale";
 
 const Alerte = () => {
   const navigation = useNavigation();
@@ -62,8 +64,8 @@ const Alerte = () => {
 
   const getCurrentDateTime = () => {
     const currentDate = new Date();
-    const formattedDate = currentDate.toLocaleDateString();
-    const formattedTime = currentDate.toLocaleTimeString();
+    const formattedDate = format(currentDate, "PPP", { locale: fr });
+    const formattedTime = format(currentDate, "p", { locale: fr });
     return `${formattedDate}, ${formattedTime}`;
   };
 
@@ -82,18 +84,16 @@ const Alerte = () => {
       </View>
       <View style={styles.alertInfo}>
         <View style={styles.info}>
-          <Text style={styles.addresseLabel}>
+          <Text style={styles.addressLabel}>
             Adresse approximative :{" "}
-            <Text style={styles.adresseInfo}>34 Rue Voltaire,</Text>
+            <Text style={styles.addressInfo}>34 Rue Voltaire,</Text>
           </Text>
           {/* <Text style={styles.userAddress}>{userAddress}</Text> */}
-          <Text style={styles.adresseInfo}>34070, Montpellier, France</Text>
+          <Text style={styles.addressInfo}>34070, Montpellier, France</Text>
         </View>
         <View style={styles.info}>
-          <Text style={styles.addresseLabel}>
-            Date et heure de l'alerte :{" "}
-            <Text style={styles.adresseInfo}>{alertDateTime}</Text>
-          </Text>
+          <Text style={styles.addressLabel}>Date et heure de l'alerte : </Text>
+          <Text style={styles.dateInfo}>{alertDateTime}</Text>
         </View>
       </View>
     </SafeAreaView>
@@ -143,20 +143,23 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     marginLeft: 40,
   },
-  addresseLabel: {
+  addressLabel: {
     fontSize: 16,
     fontWeight: "bold",
     marginBottom: 5,
+    textAlign: "left",
   },
-  userAddress: {
-    fontSize: 16,
-    color: "black",
-    fontWeight: "bold",
-  },
-  adresseInfo: {
+  addressInfo: {
     fontSize: 16,
     color: "black",
     fontWeight: "normal",
+    textAlign: "left",
+  },
+  dateInfo: {
+    fontSize: 16,
+    color: "black",
+    fontWeight: "normal",
+    textAlign: "left",
   },
   info: {
     paddingBottom: 35,
