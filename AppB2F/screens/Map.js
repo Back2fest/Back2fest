@@ -90,7 +90,7 @@ const Map = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <MapView style={styles.map} region={mapRegion}>
-          <Marker coordinate={mapRegion} title="Marker" />
+          <Marker coordinate={mapRegion} title="Le Festival" />
         </MapView>
         <View style={styles.rectangle}>
           <View style={styles.searchContainer}>
@@ -109,6 +109,9 @@ const Map = () => {
               </TouchableOpacity>
             ))}
           </View>
+          <TouchableOpacity style={styles.buttonSOS}>
+            <Text style={styles.bigbuttonSOSText}>SOS</Text>
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.navBar}>
@@ -200,7 +203,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: 20,
-    marginTop: 90,
+    marginTop: 100,
   },
   button: {
     borderWidth: 1,
@@ -212,6 +215,22 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     marginRight: 5,
+  },
+  buttonSOS: {
+    backgroundColor: "#EF8536",
+    borderRadius: 30,
+    padding: 20,
+    height: 90,
+    marginTop: 40,
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  bigbuttonSOSText: {
+    fontSize: 20,
+    marginTop: 12,
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center", // Ajout de la propriété textAlign
   },
 });
 
