@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/core";
+import { useNavigation } from "@react-navigation/native";
 import MapView, { Marker } from "react-native-maps";
 import React, { useState, useEffect } from "react";
 import { Entypo } from "@expo/vector-icons";
@@ -103,6 +103,11 @@ const Map = () => {
     }
   };
 
+  const handleYes = () => {
+    closeModal();
+    navigation.navigate('Alerte');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
@@ -147,7 +152,7 @@ const Map = () => {
             </Text>
             <View style={styles.buttonContainerMod}>
               <TouchableOpacity style={styles.buttonYes}>
-                <Text style={styles.buttonTextmod}>Oui</Text>
+                <Text style={styles.buttonTextmod} onPress={handleYes}>Oui</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.buttonNo} onPress={closeModal}>
                 <Text style={styles.buttonTextmod}>Non</Text>
