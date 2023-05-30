@@ -91,7 +91,7 @@ const Alerte = () => {
         </View>
         <View style={styles.info}>
           <Text style={styles.addresseLabel}>
-            Date et l'heure de l'alerte :{" "}
+            Date et heure de l'alerte :{" "}
             <Text style={styles.adresseInfo}>{alertDateTime}</Text>
           </Text>
         </View>
