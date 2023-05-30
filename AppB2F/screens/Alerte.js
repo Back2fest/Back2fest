@@ -95,6 +95,11 @@ const Alerte = () => {
           <Text style={styles.addressLabel}>Date et heure de l'alerte : </Text>
           <Text style={styles.dateInfo}>{alertDateTime}</Text>
         </View>
+        <View style={styles.info}>
+          <Text style={styles.addressLabel}>
+            Etat de l’alerte : <Text style={styles.alerteEtat}> ACTIVE</Text>
+          </Text>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -163,6 +168,11 @@ const styles = StyleSheet.create({
   },
   info: {
     paddingBottom: 35,
+  },
+  alerteEtat: {
+    fontSize: 20,
+    color: "#EF8536",
+    fontWeight: "bold",
   },
 });
 
