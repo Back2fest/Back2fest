@@ -28,7 +28,7 @@ const Map = () => {
   });
   const [errorMsg, setErrorMsg] = useState("");
   const [searchText, setSearchText] = useState("");
-  const [filteredButtons, setFilteredButtons] = useState([]);
+  const [filteredButtons, setFilteredButtons] = useState([]); // Initialise avec une valeur vide
 
   const buttons = [
     { label: "Camping", icon: <FontAwesome5 name="campground" size={16} color="black" /> },
@@ -54,6 +54,7 @@ const Map = () => {
 
   useEffect(() => {
     userLocation();
+    setFilteredButtons(buttons); // Initialise le state avec la valeur des boutons
   }, []);
 
   const userLocation = async () => {
@@ -230,7 +231,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     color: "white",
     fontWeight: "bold",
-    textAlign: "center", // Ajout de la propriété textAlign
+    textAlign: "center",
   },
 });
 
