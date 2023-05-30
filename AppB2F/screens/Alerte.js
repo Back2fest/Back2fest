@@ -5,8 +5,11 @@ import {
   SafeAreaView,
   StyleSheet,
   TouchableOpacity,
+  Modal,
+  Dimensions,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
@@ -25,9 +28,18 @@ const Alerte = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [userAddress, setUserAddress] = useState("");
   const [alertDateTime, setAlertDateTime] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
 
   const goBack = () => {
     navigation.goBack();
+  };
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
   };
 
   useEffect(() => {
@@ -102,10 +114,30 @@ const Alerte = () => {
         </View>
       </View>
       <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.buttonSOS}>
-            <Text style={styles.bigbuttonSOSText}>Scanner le bracelet pour envoyer</Text>
-          </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonSOS} onPress={openModal}>
+          <Text style={styles.bigbuttonSOSText}>
+            Scanner le bracelet pour envoyer
+          </Text>
+        </TouchableOpacity>
+      </View>
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        animationType="none"
+        onRequestClose={closeModal}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalText}>Scan du bracelet</Text>
+            <MaterialCommunityIcons name="nfc" style={styles.nfcicon} size={250} color="#EF8536" />
+            <View style={styles.buttonContainerMod}>
+              <TouchableOpacity style={styles.buttonNo} onPress={closeModal}>
+                <Text style={styles.buttonTextmod}>Fermer le scan</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
+      </Modal>
     </SafeAreaView>
   );
 };
@@ -200,6 +232,52 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    backgroundColor: "white",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height / 2,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    padding: 20,
+  },
+  modalText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
+    marginTop: 10,
+  },
+  buttonNo: {
+    borderWidth: 2,
+    borderColor: "#EF8536",
+    borderRadius: 30,
+    padding: 10,
+  },
+  nfcicon: {
+    justifyContent: "center",
+    alignSelf: "center",
+  },
+  buttonText: {
+    color: "black",
+    fontWeight: "bold",
+    paddingRight: 5,
+  },
+  buttonTextmod: {
+    color: "black",
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  buttonContainerMod: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    paddingHorizontal: 20,
+    marginTop: 10,
   },
 });
 
