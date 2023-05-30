@@ -5,6 +5,8 @@ import {
   SafeAreaView,
   StyleSheet,
   TouchableOpacity,
+  Modal,
+  Dimensions,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -25,9 +27,18 @@ const Alerte = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [userAddress, setUserAddress] = useState("");
   const [alertDateTime, setAlertDateTime] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
 
   const goBack = () => {
     navigation.goBack();
+  };
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
   };
 
   useEffect(() => {
@@ -102,10 +113,33 @@ const Alerte = () => {
         </View>
       </View>
       <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.buttonSOS}>
-            <Text style={styles.bigbuttonSOSText}>Scanner le bracelet pour envoyer</Text>
-          </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonSOS} onPress={openModal}>
+          <Text style={styles.bigbuttonSOSText}>
+            Scanner le bracelet pour envoyer
+          </Text>
+        </TouchableOpacity>
+      </View>
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        animationType="none"
+        onRequestClose={closeModal}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalText}>Scan du bracelet</Text>
+            
+            <View style={styles.buttonContainerMod}>
+              <TouchableOpacity style={styles.buttonYes}>
+                <Text style={styles.buttonTextmod}>Oui</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.buttonNo} onPress={closeModal}>
+                <Text style={styles.buttonTextmod}>Non</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
+      </Modal>
     </SafeAreaView>
   );
 };
@@ -200,6 +234,62 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    backgroundColor: "white",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height / 2,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    padding: 20,
+  },
+  modalText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 20,
+    marginTop: 10,
+  },
+  modalTextdesc: {
+    fontSize: 16,
+    marginTop: 30,
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  buttonYes: {
+    borderWidth: 2,
+    borderColor: "#EF8536",
+    borderRadius: 30,
+    padding: 10,
+    marginLeft: 50,
+  },
+  buttonNo: {
+    borderWidth: 2,
+    borderColor: "#EF8536",
+    borderRadius: 30,
+    padding: 10,
+    marginRight: 50,
+  },
+  buttonText: {
+    color: "black",
+    fontWeight: "bold",
+    paddingRight: 5,
+  },
+  buttonTextmod: {
+    color: "black",
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  buttonContainerMod: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    paddingHorizontal: 20,
+    marginTop: 50,
   },
 });
 
