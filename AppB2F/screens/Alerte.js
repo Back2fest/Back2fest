@@ -109,7 +109,7 @@ const Alerte = () => {
         </View>
         <View style={styles.info}>
           <Text style={styles.addressLabel}>
-            Etat de l’alerte : <Text style={styles.alerteEtat}> ACTIVE</Text>
+            État de l’alerte : <Text style={styles.alerteEtat}> ACTIVE</Text>
           </Text>
         </View>
       </View>
