@@ -8,6 +8,7 @@ import {
   Text,
   SafeAreaView,
   Button,
+  Modal,
   StyleSheet,
   TouchableOpacity,
   Dimensions,
@@ -29,10 +30,17 @@ const Map = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [searchText, setSearchText] = useState("");
   const [filteredButtons, setFilteredButtons] = useState([]); // Initialise avec une valeur vide
+  const [modalVisible, setModalVisible] = useState(false);
 
   const buttons = [
-    { label: "Camping", icon: <FontAwesome5 name="campground" size={16} color="black" /> },
-    { label: "Toilettes", icon: <FontAwesome5 name="toilet" size={16} color="black" /> },
+    {
+      label: "Camping",
+      icon: <FontAwesome5 name="campground" size={16} color="black" />,
+    },
+    {
+      label: "Toilettes",
+      icon: <FontAwesome5 name="toilet" size={16} color="black" />,
+    },
     { label: "Stand", icon: <Entypo name="shop" size={24} color="black" /> },
   ];
 
@@ -50,6 +58,14 @@ const Map = () => {
 
   const goToFood = () => {
     navigation.navigate("Food");
+  };
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
   };
 
   useEffect(() => {
@@ -110,11 +126,24 @@ const Map = () => {
               </TouchableOpacity>
             ))}
           </View>
-          <TouchableOpacity style={styles.buttonSOS}>
+          <TouchableOpacity style={styles.buttonSOS} onPress={openModal}>
             <Text style={styles.bigbuttonSOSText}>SOS</Text>
           </TouchableOpacity>
         </View>
       </View>
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        animationType="none"
+        onRequestClose={closeModal}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalText}>Modal Content</Text>
+            <Button onPress={closeModal} title="Close Modal" />
+          </View>
+        </View>
+      </Modal>
       <View style={styles.navBar}>
         <TouchableOpacity style={styles.iconContainer} onPress={goToFood}>
           <FontAwesome5 name="shopping-basket" size={32} color="black" />
@@ -232,6 +261,25 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    backgroundColor: "white",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height / 2,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    padding: 20,
+  },
+  modalText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
   },
 });
 
