@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: 20,
-    marginTop: 80,
+    marginTop: 90,
   },
   button: {
     borderWidth: 1,
