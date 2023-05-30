@@ -100,6 +100,11 @@ const Alerte = () => {
             Etat de l’alerte : <Text style={styles.alerteEtat}> ACTIVE</Text>
           </Text>
         </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.buttonSOS}>
+            <Text style={styles.bigbuttonSOSText}>Scanner le bracelet pour envoyer</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -144,6 +149,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
   alertInfo: {
+    flex: 1,
     marginTop: 40,
     alignItems: "flex-start",
     marginLeft: 40,
@@ -173,6 +179,26 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#EF8536",
     fontWeight: "bold",
+  },
+  buttonContainer: {
+    alignItems: "center",
+    marginTop: 40,
+  },
+  buttonSOS: {
+    backgroundColor: "#EF8536",
+    borderRadius: 30,
+    padding: 20,
+    height: 90,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  bigbuttonSOSText: {
+    fontSize: 20,
+    marginTop: 12,
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
 
