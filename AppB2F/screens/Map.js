@@ -143,9 +143,16 @@ const Map = () => {
             <Text style={styles.modalTextdesc}>
               Vous avez appuyé sur le bouton SOS réservé aux urgences, un
               message d’alerte sera envoyé aux services de sécurité et de santé,
-              souhaitez vous continuer ?
+              souhaitez-vous continuer ?
             </Text>
-            <Button onPress={closeModal} title="Fermer" />
+            <View style={styles.buttonContainerMod}>
+              <TouchableOpacity style={styles.buttonYes}>
+                <Text style={styles.buttonTextmod}>Oui</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.buttonNo} onPress={closeModal}>
+                <Text style={styles.buttonTextmod}>Non</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </Modal>
@@ -248,9 +255,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  buttonText: {
-    marginRight: 5,
-  },
   buttonSOS: {
     backgroundColor: "#EF8536",
     borderRadius: 30,
@@ -284,13 +288,44 @@ const styles = StyleSheet.create({
   modalText: {
     fontSize: 18,
     fontWeight: "bold",
-    marginBottom: 10,
+    marginBottom: 20,
+    marginTop: 10,
   },
   modalTextdesc: {
     fontSize: 16,
-    marginBottom: 10,
-    textAlign: "center", // Ajout de la propriété textAlign
-    marginTop: 10,
+    marginTop: 30,
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  buttonYes: {
+    borderWidth: 2,
+    borderColor: "#EF8536",
+    borderRadius: 30,
+    padding: 10,
+    marginLeft: 50,
+  },
+  buttonNo: {
+    borderWidth: 2,
+    borderColor: "#EF8536",
+    borderRadius: 30,
+    padding: 10,
+    marginRight: 50,
+  },
+  buttonText: {
+    color: "black",
+    fontWeight: "bold",
+    paddingRight: 5,
+  },
+  buttonTextmod: {
+    color: "black",
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  buttonContainerMod: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    paddingHorizontal: 20,
+    marginTop: 50,
   },
 });
 
