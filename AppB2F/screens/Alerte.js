@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
   alertText: {
     fontSize: 18,
-    paddingLeft: 38,
+    paddingLeft: 43,
     fontWeight: "bold",
     textAlign: "center",
   },
