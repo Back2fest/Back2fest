@@ -27,16 +27,27 @@ const Map = () => {
     longitudeDelta: 0.0421,
   });
   const [errorMsg, setErrorMsg] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const [filteredButtons, setFilteredButtons] = useState([]);
+
+  const buttons = [
+    { label: "Camping", icon: <FontAwesome5 name="campground" size={16} color="black" /> },
+    { label: "Toilettes", icon: <FontAwesome5 name="toilet" size={16} color="black" /> },
+    { label: "Stand", icon: <Entypo name="shop" size={24} color="black" /> },
+  ];
 
   const goToHome = () => {
     navigation.navigate("Accueil");
   };
+
   const goToProfil = () => {
     navigation.navigate("Profil");
   };
+
   const goToCard = () => {
     navigation.navigate("CreditCard");
   };
+
   const goToFood = () => {
     navigation.navigate("Food");
   };
@@ -63,6 +74,14 @@ const Map = () => {
     console.log(location.coords.latitude, location.coords.longitude);
   };
 
+  const handleSearch = (text) => {
+    setSearchText(text);
+    const filtered = buttons.filter((button) =>
+      button.label.toLowerCase().includes(text.toLowerCase())
+    );
+    setFilteredButtons(filtered);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
@@ -74,21 +93,17 @@ const Map = () => {
             <TextInput
               style={styles.searchInput}
               placeholder="Rechercher un lieu"
+              value={searchText}
+              onChangeText={handleSearch}
             />
           </View>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Camping</Text>
-              <FontAwesome5 name="campground" size={16} color="black" />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Toilettes</Text>
-              <FontAwesome5 name="toilet" size={16} color="black" />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Stand</Text>
-              <Entypo name="shop" size={24} color="black" />
-            </TouchableOpacity>
+            {filteredButtons.map((button, index) => (
+              <TouchableOpacity style={styles.button} key={index}>
+                <Text style={styles.buttonText}>{button.label}</Text>
+                {button.icon}
+              </TouchableOpacity>
+            ))}
           </View>
         </View>
       </View>
@@ -148,7 +163,7 @@ const styles = StyleSheet.create({
     zIndex: 100,
     width: "100%",
     height: 420,
-    backgroundColor: "#f2f2f2", // Utilisez la même couleur que celle de l'écran principal #f2f2f2
+    backgroundColor: "#f2f2f2",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     shadowColor: "#000",
