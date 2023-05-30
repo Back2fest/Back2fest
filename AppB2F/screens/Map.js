@@ -70,7 +70,24 @@ const Map = () => {
         </MapView>
         <View style={styles.rectangle}>
           <View style={styles.searchContainer}>
-            <TextInput style={styles.searchInput} placeholder="Rechercher un lieu" />
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Rechercher un lieu"
+            />
+          </View>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText}>Button 1</Text>
+              <FontAwesome name="arrow-right" size={16} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText}>Button 2</Text>
+              <FontAwesome name="arrow-right" size={16} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText}>Button 3</Text>
+              <FontAwesome name="arrow-right" size={16} color="black" />
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -158,6 +175,23 @@ const styles = StyleSheet.create({
   iconContainer: {
     flex: 1,
     alignItems: "center",
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    marginBottom: 20,
+  },
+  button: {
+    borderWidth: 1,
+    borderColor: "#EF8536",
+    borderRadius: 20,
+    padding: 10,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  buttonText: {
+    marginRight: 5,
   },
 });
 

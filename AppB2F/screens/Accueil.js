@@ -325,6 +325,7 @@ const styles = StyleSheet.create({
   timeText: {
     fontSize: 14,
     fontWeight: "bold",
+    color: '#EF8536',
   },
 });
 
